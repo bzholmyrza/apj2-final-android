@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Call<ResponseBody> call = apiInterface.login("SeizenPass", "test1234"/*emailEditText.getText().toString().trim(), passEditText.getText().toString().trim()*/);
+        Call<ResponseBody> call = apiInterface.login(emailEditText.getText().toString().trim(), passEditText.getText().toString().trim());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
