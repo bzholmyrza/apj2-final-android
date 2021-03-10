@@ -14,8 +14,8 @@ public interface APIInterface {
     @GET("/api/hello")
     Call<String> sayHello(@Header("Authorization") String authorization);
 
-    @GET("/api/hi")
-    Call<String> sayHi();
+    @GET("/api/users")
+    Call<ResponseBody> sayHi();
 
     @POST("/login")
     @FormUrlEncoded
