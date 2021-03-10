@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Log.d("INFO: ", response.headers().get("Set-Cookie").toString());
+                    //Log.d("INFO: ", response.headers().get("Set-Cookie").toString());
+                    Log.d("INFO: ", "success");
                     //updAnswerTextView(response.body(), true);
                    // setToken(response.body());
                 } else {

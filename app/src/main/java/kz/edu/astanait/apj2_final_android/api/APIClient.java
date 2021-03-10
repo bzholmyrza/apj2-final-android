@@ -3,6 +3,10 @@ package kz.edu.astanait.apj2_final_android.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.net.CookieHandler;
+import java.net.CookieManager;
+
+import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -16,7 +20,10 @@ public class APIClient {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        CookieHandler cookieHandler = new CookieManager();
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
+                .cookieJar(new JavaNetCookieJar(cookieHandler))
+                .build();
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
