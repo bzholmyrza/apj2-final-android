@@ -18,22 +18,24 @@ public class APIClient {
 
     public static Retrofit getClient() {
 
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        CookieHandler cookieHandler = new CookieManager();
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
-                .cookieJar(new JavaNetCookieJar(cookieHandler))
-                .build();
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
+        if (retrofit == null) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            CookieHandler cookieHandler = new CookieManager();
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
+                    .cookieJar(new JavaNetCookieJar(cookieHandler))
+                    .build();
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("http://10.0.2.2:8080/")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }
 
         return retrofit;
     }
