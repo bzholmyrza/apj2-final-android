@@ -1,6 +1,8 @@
 package kz.edu.astanait.apj2_final_android.model;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
     private long answerId;
     private String answerText;
 

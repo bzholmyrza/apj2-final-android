@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Call<ResponseBody> call = apiInterface.login("bzholmyrza", "admin"/*emailEditText.getText().toString().trim(), passEditText.getText().toString().trim()*/);
+        Call<ResponseBody> call = apiInterface.login("SeizenPass", "test1234"/*emailEditText.getText().toString().trim(), passEditText.getText().toString().trim()*/);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Log.d("INFO: ", "success");
-                    Intent intent = new Intent(getApplicationContext(), VoteActivity.class);
-                    //Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    //Intent intent = new Intent(getApplicationContext(), VoteActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                 } else {
                     Log.d("INFO: ", "unsuccessful");
